@@ -1,0 +1,72 @@
+<div class="container">
+    <div class="button-add">
+        <button mat-raised-button color="warn" (click)="openDialog()">Add Challenge</button>
+    </div>
+
+    <mat-form-field appearance="standard">
+        <mat-label>Filter</mat-label>
+        <input matInput (keyup)="applyFilter($event)" placeholder="Challenge" #input>
+      </mat-form-field>
+      
+      <div class="mat-elevation-z8">
+        <table mat-table [dataSource]="dataSource" matSort>
+      
+          <!-- ID Column -->
+          <ng-container matColumnDef="id">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> ID </th>
+            <td mat-cell *matCellDef="let row"> {{row.id}} </td>
+          </ng-container>
+      
+          <!-- Title -->
+          <ng-container matColumnDef="title">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Title </th>
+            <td mat-cell *matCellDef="let row"> {{row.title}}</td>
+          </ng-container>
+      
+          <!-- Business Id -->
+          <ng-container matColumnDef="businessId">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Business Id </th>
+            <td mat-cell *matCellDef="let row"> {{row.businessId}} </td>
+          </ng-container>
+      
+          <!-- Url To Image -->
+          <ng-container matColumnDef="urlToImage">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Url To Image </th>
+            <td mat-cell *matCellDef="let row"> {{row.urlToImage}} </td>
+          </ng-container>
+
+          <!-- Challenge Type -->
+          <ng-container matColumnDef="challengeType">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Challenge Type </th>
+            <td mat-cell *matCellDef="let row"> {{row.challengeType}} </td>
+          </ng-container>
+
+          <!-- Actions -->
+          <ng-container matColumnDef="action">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Action</th>
+            <td mat-cell *matCellDef="let row">
+                <button mat-icon-button color="primary" (click)="editChallenge(row)">
+                    <mat-icon>
+                        edit
+                    </mat-icon>
+                </button>
+                <button mat-icon-button color="warn" (click)="deleteChallenge(row.id)">
+                    <mat-icon>
+                        delete
+                    </mat-icon>
+                </button>
+            </td>
+          </ng-container>
+      
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      
+          <!-- Row shown when there is no matching data. -->
+          <tr class="mat-row" *matNoDataRow>
+            <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
+          </tr>
+        </table>
+      
+        <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page of users"></mat-paginator>
+      </div>
+</div>

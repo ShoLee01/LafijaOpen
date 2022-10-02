@@ -1,0 +1,18 @@
+{
+  "challenges": [
+    {
+      "title": "Challenge 1",
+      "businessId": 2,
+      "urlToImage": "https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png",
+      "challengeType": "team",
+      "id": 1
+    },
+    {
+      "id": 2,
+      "title": "Challenge 2",
+      "businessId": 2,
+      "urlToImage": "https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png",
+      "challengeType": "team"
+    }
+  ]
+}
